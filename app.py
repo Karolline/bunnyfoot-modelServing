@@ -27,7 +27,7 @@ def classifier():
     result = {"success":False, "probability":0}
 
     # FileStorage > array 전환
-    img_data = Image.open(request.files['image'].stream).resize((64,64))
+    img_data = Image.open(request.files['image'].stream).resize((64,64)).convert('RGB')
     input_img = np.array([img_to_array(img_data)])
 
     # model 입력
@@ -44,4 +44,3 @@ def classifier():
 
 if __name__ == "__main__":
     app.run()
-
